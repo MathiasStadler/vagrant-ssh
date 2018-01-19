@@ -2,7 +2,7 @@
 
 ## effective Vagrantfile
 
-'''ruby
+```ruby
 VM_NAME = "vagrant-ssh-default"
 VIRTUALBOX_MEMORY = "4096"
 VIRTUALBO_CPU = "4"
@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.cpus = VIRTUALBO_CPU
         end
   end
-'''
+```
 
 ## log output create own ssh kys
 
