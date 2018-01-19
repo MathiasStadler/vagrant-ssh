@@ -1,5 +1,12 @@
 {
     "cSpell.words": [
-        "vagrantfile"
+        "VIRTUALBOX",
+        "Vargrantfile",
+        "disksize",
+        "keypair",
+        "proxyconf",
+        "uuid",
+        "vagrantfile",
+        "vbguest"
     ]
 }

@@ -4,7 +4,7 @@
 # https://serverfault.com/questions/1669/shell-command-to-monitor-changes-in-a-file-whats-it-called-again/1670
 
 PACKAGE_NAME="inotify-tools"
-
+# shellcheck disable=SC2016
 if [ "$(dpkg-query -W -f='${Status}' "${PACKAGE_NAME}"  2>/dev/null | grep -c "ok installed")" -eq 0 ];
 then
     sudo apt install "${PACKAGE_NAME}";

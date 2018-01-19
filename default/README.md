@@ -6,7 +6,7 @@
 VM_NAME = "vagrant-ssh-default"
 VAGRANT_BOX_NAME = "debian/stretch64"
 VIRTUALBOX_MEMORY = "4096"
-VIRTUALBO_CPU = "4"
+VIRTUALBOX_CPU = "4"
 ENV["LC_ALL"] = "en_US.UTF-8"
 VAGRANT_VERSION = "2.0.1"
 VAGRANTFILE_API_VERSION = "2"
@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.name= VM_NAME
         vb.gui = false
         vb.memory = VIRTUALBOX_MEMORY
-        vb.cpus = VIRTUALBO_CPU
+        vb.cpus = X
     end
 end
 ```
