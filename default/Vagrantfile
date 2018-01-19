@@ -2,9 +2,12 @@
 # vi: set ft=ruby :
 
 VM_NAME = "vagrant-ssh-default"
+VIRTUALBOX_MEMORY = "4096"
+VIRTUALBO_CPU = "4"
+
 
 ENV["LC_ALL"] = "en_US.UTF-8"
-VAGRANT_VERSION = "1.9.5"
+VAGRANT_VERSION = "2.0.1"
 VAGRANTFILE_API_VERSION = "2"
 
 
@@ -13,9 +16,6 @@ VAGRANTFILE_API_VERSION = "2"
 # This can help with compatibility issues that may otherwise arise from using 
 # a too old or too new Vagrant version with a Vagrantfile.
 Vagrant.require_version ">= #{VAGRANT_VERSION}"
-
-
-
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -36,7 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     
     # This sets the username that Vagrant will SSH as by default. 
     # Providers are free to override this if they detect a more appropriate user. By default this is "vagrant",
-    #  since that is what most public boxes are made as.
+    # since that is what most public boxes are made as.
     #config.ssh.username = "vagrant" 
 
     # This sets a password that Vagrant will use to authenticate the SSH user. Note that Vagrant recommends you
@@ -58,42 +58,46 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # option.
     #config.ssh.guest_port = 22 
     
-    
-
     # The path to the private key to use to SSH into the guest machine. By default this is the insecure private key
     # that ships with Vagrant, since that is what public boxes use. If you make your own custom box with a custom 
     # SSH key, this should point to that private key.
     #config.ssh.private_key_path
 
-    # You can also specify multiple private keys by setting this to be an array. This is useful, for example, if you use the default private key to bootstrap the machine, but replace it with perhaps a more secure key later.
+    # You can also specify multiple private keys by setting this to be an array. This is useful, for example, if you
+    # use the default private key to bootstrap the machine, but replace it with perhaps a more secure key later.
     
-    # Only use Vagrant-provided SSH private keys (do not use any keys stored in ssh-agent). The default value is true.
+    # Only use Vagrant-provided SSH private keys (do not use any keys stored in ssh-agent). The default value is 
+    # true.
     #config.ssh.keys_only =  true
 
     # Perform strict host-key verification. The default value is false.
-    #config.ssh.paranoid = false.
+    #config.ssh.paranoid = false
     
     # If true, agent forwarding over SSH connections is enabled. Defaults to false.
     #config.ssh.forward_agent = false
 
     # If true, X11 forwarding over SSH connections is enabled. Defaults to false.
-    #config.ssh.forward_x11 
+    #config.ssh.forward_x11 = false
     
 
     # An array of host environment variables to forward to the guest. If you are familiar with OpenSSH, this 
     # corresponds to the SendEnv parameter.
     # config.ssh.forward_env = ["CUSTOM_VAR"]
-    # forward terminal type for better compatibility with Dialog - disabled on Ubuntu by default
-    #config.ssh.forward_env = ["TERM"]
+    
+    # HINT! forward terminal type for better compatibility with Dialog - disabled on Ubuntu by default
+    # config.ssh.forward_env = ["TERM"]
     
    
-    # If true, Vagrant will automatically insert a keypair to use for SSH, replacing Vagrant's default insecure key inside the machine if detected. By default, this is true.
-    #config.ssh.insert_key  
+    # If true, Vagrant will automatically insert a keypair to use for SSH, replacing Vagrant's default insecure 
+    # key inside the machine if detected. By default, this is true.
+    #config.ssh.insert_key = true
+      
     
     # This only has an effect if you do not already use private keys for authentication or if you are relying on the default insecure key. If you do not have to care about security in your project and want to keep using the default insecure key, set this to false.
     
     
-    # A command-line command to execute that receives the data to send to SSH on stdin. This can be used to proxy the SSH connection. %h in the command is replaced with the host and %p is replaced with the port.
+    # A command-line command to execute that receives the data to send to SSH on stdin. This can be used to proxy 
+    # the SSH connection. %h in the command is replaced with the host and %p is replaced with the port.
     #config.ssh.proxy_command
     
     # If true, pty will be used for provisioning. Defaults to false.
@@ -137,10 +141,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # tunnel from host port 8008 to port 80 on guest.
     # config.ssh.extra_args  
 
-
     ##### ssh option end
-
-
 
 
     # Disable automatic box update checking. If you disable this, then
@@ -180,15 +181,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #
     config.vm.provider "virtualbox" do |vb|
     
+        # name of virtualbox vm
         vb.name= VM_NAME
     
     
         # Display the VirtualBox GUI when booting the machine
-       vb.gui = true
+        vb.gui = false
     
-       # Customize the amount of memory on the VM:
-       vb.memory = "1024"
-    end
+        # Customize the amount of memory on the VM:
+        vb.memory = VIRTUALBOX_MEMORY
+        
+        # Customize the the count of cpu on the VM:
+        vb.cpus = VIRTUALBO_CPU
+    
+    
+        end
     #
     # View the documentation for the provider you are using for more
     # information on available options.

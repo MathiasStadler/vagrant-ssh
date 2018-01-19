@@ -2,15 +2,17 @@
 
 # vagrant work directory
 /.vagrant
-/bin
-/build
-/tmp
-/run
+**/*.vagrant
+**/*bin
+**/*build
+**/*tmp
+**/*run
 
 # files
 **/*iso
 **/*img
-
+**/*id
+**/*log
 
 
 # security
