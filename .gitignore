@@ -1,0 +1,21 @@
+# directory
+
+# vagrant work directory
+/.vagrant
+/bin
+/build
+/tmp
+/run
+
+# files
+**/*iso
+**/*img
+
+
+
+# security
+# no keys inside any repositories
+**/*key
+**/*pem
+**/*crt
+**/*pub
