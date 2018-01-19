@@ -6,6 +6,18 @@
 
 - use vagrant out of the box
 
+## ssh insecure key
+
+@TODO/Mathias
+
+## ssh own keys
+
+@TODO/Mathias
+
+## ssh with crt from CA
+
+@TODO/Mathias
+
 ## ensure-plugins
 
 - install plugins function (ruby def) inside Vagrantfile
