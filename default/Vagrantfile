@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 
 VM_NAME = "vagrant-ssh-default"
+VAGRANT_BOX_NAME = "debian/stretch64"
 VIRTUALBOX_MEMORY = "4096"
 VIRTUALBO_CPU = "4"
 
@@ -28,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
     # Every Vagrant development environment requires a box. You can search for
     # boxes at https://atlas.hashicorp.com/search.
-    config.vm.box = "debian/stretch64"
+    config.vm.box = VAGRANT_BOX_NAME
   
     # ####
     # from here
