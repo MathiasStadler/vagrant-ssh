@@ -24,12 +24,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ```bash
 default: Vagrant insecure key detected. Vagrant will automatically replace
-
 default: this with a newly generated keypair for better security.
-
 default: Inserting generated public key within guest...
-
 default: Removing insecure key from the guest if it's present...
-
 default: Key inserted! Disconnecting and reconnecting using new SSH key
 ```
