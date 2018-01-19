@@ -2,8 +2,6 @@
 
 - [from here](https://github.com/hashicorp/vagrant/issues/1874)
 
-
-
 ## effective Vagrantfile
 
 ```ruby
