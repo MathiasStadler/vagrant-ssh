@@ -34,6 +34,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # forward terminal type for better compatibility with Dialog - disabled on Ubuntu by default
     config.ssh.forward_env = ["TERM"]
 
+    #####
+
+
+
+
+    #####
+
+
+
 
     # Disable automatic box update checking. If you disable this, then
     # boxes will only be checked for updates when the user runs
