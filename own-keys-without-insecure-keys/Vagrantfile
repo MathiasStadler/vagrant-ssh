@@ -1,19 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VM_NAME = "vagrant-ssh-own-keys"
+VM_NAME = "vagrant-ssh-own-keys-without-insecure-keys"
 VAGRANT_BOX_NAME = "debian/stretch64"
-VAGRANT_HOME_PATH = ENV["VAGRANT_HOME"] ||= "~/.vagrant.d"
-VAGRANT_DOTFILE_PATH = ENV["VAGRANT_DOTFILE_PATH"] ||= "~/.vagrant.d"
 
 VIRTUALBOX_MEMORY = "4096"
-VIRTUALBO_CPU = "4"
+VIRTUALBOX_CPU = "4"
 
 
 ENV["LC_ALL"] = "en_US.UTF-8"
 VAGRANT_VERSION = "2.0.1"
 VAGRANTFILE_API_VERSION = "2"
-
 
 # A set of Vagrant version requirements can be specified in the Vagrantfile 
 # to enforce that people use a specific version of Vagrant with a Vagrantfile. 
@@ -65,7 +62,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # The path to the private key to use to SSH into the guest machine. By default this is the insecure private key
     # that ships with Vagrant, since that is what public boxes use. If you make your own custom box with a custom 
     # SSH key, this should point to that private key.
-    config.ssh.private_key_path = ["#{VAGRANT_HOME_PATH}/insecure_private_key", "~/.ssh/id_rsa"]
+    # config.ssh.private_key_path 
     
 
     # You can also specify multiple private keys by setting this to be an array. This is useful, for example, if you
@@ -79,7 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.ssh.paranoid = true
     
     # If true, agent forwarding over SSH connections is enabled. Defaults to false.
-    config.ssh.forward_agent = true
+    #config.ssh.forward_agent = true
 
     # If true, X11 forwarding over SSH connections is enabled. Defaults to false.
     #config.ssh.forward_x11 = false
@@ -95,7 +92,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
    
     # If true, Vagrant will automatically insert a keypair to use for SSH, replacing Vagrant's default insecure 
     # key inside the machine if detected. By default, this is true.
-    config.ssh.insert_key = false
+    config.ssh.insert_key = true
       
     
     # This only has an effect if you do not already use private keys for authentication or if you are relying on the default insecure key. If you do not have to care about security in your project and want to keep using the default insecure key, set this to false.
@@ -197,7 +194,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.memory = VIRTUALBOX_MEMORY
         
         # Customize the the count of cpu on the VM:
-        vb.cpus = VIRTUALBO_CPU
+        vb.cpus = VIRTUALBOX_CPU
     
     
         end

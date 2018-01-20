@@ -3,12 +3,13 @@
         "VIRTUALBOX",
         "Vargrantfile",
         "disksize",
+        "dpkg",
         "keypair",
+        "markdownlint",
         "proxyconf",
         "trapapa",
         "uuid",
         "vagrantfile",
-        "vbguest",
-        "dpkg"
+        "vbguest"
     ]
 }

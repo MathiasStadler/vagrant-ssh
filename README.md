@@ -2,21 +2,30 @@
 
 - apply OpenSSH with vagrant
 
-## default
+## default - SAFE
 
-- use vagrant out of the box
+- used the keys from .vagrant/machines/default/virtualbox/private_key
+  - create for each VM box during the vagrant up phase
 
-## ssh insecure key
+## ssh insecure key - NOT SAFE
 
 - use vagrant out of the box but with with insecure key
+  - equal keypair for each VM
 
 ```bash
 config.ssh.insert_key = false
 ```
 
-## ssh own_keys
+## ssh own_keys - NOT SAFE
 
-- take the keys from $HOME/.ssh for login on the linux based box
+- used the keys from $HOME/.ssh for login on the linux based box
+- used the keys from $HOME/.vagrant.d/insecure_private_key
+
+## ssh own-keys-without-insecure-keys - SAFE
+
+- used the keys from $HOME/.ssh for login on the linux based box
+- used the keys from .vagrant/machines/default/virtualbox/private_key
+  - create for each VM box during the vagrant up phase
 
 ## ssh with crt from CA
 
@@ -35,9 +44,3 @@ VAGRANT_LOG=info vagrant up 2>&1| tee /tmp/vagrant.log
 ## sources
 
 [Change Insecure Key To My Own Key On Vagrant](http://ermaker.github.io/blog/2015/11/18/change-insecure-key-to-my-own-key-on-vagrant.html)
-
-
-https://swarm.workshop.perforce.com/view/guest/jen_bottom/vagrant/Vagrantfile?v=85
-
-
-vb.customize ["modifyvm", :id, "--ioapic", "on"]

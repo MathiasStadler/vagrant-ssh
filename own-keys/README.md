@@ -8,9 +8,8 @@
 VM_NAME = "vagrant-ssh-own-keys"
 VAGRANT_BOX_NAME = "debian/stretch64"
 VAGRANT_HOME_PATH = ENV["VAGRANT_HOME"] ||= "~/.vagrant.d"
-VAGRANT_DOTFILE_PATH = ENV["VAGRANT_DOTFILE_PATH"] ||= "~/.vagrant.d"
 VIRTUALBOX_MEMORY = "4096"
-VIRTUALBO_CPU = "4"
+VIRTUALBOX_CPU = "4"
 ENV["LC_ALL"] = "en_US.UTF-8"
 VAGRANT_VERSION = "2.0.1"
 VAGRANTFILE_API_VERSION = "2"
@@ -23,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.name= VM_NAME
         vb.gui = false
         vb.memory = VIRTUALBOX_MEMORY
-        vb.cpus = VIRTUALBO_CPU
+        vb.cpus = VIRTUALBOX_CPU
         end
     config.vm.provision :shell, privileged: false do |shell_action|
         shell_action.inline = <<-SHELL
@@ -38,7 +37,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ```
 
-## connect to vagrant vm wit own key
+## connect to vagrant vm with vagrant default key
+
+```bash
+ssh -i $USER/.vagrant.d/insecure_private_key  vagrant@127.0.0.1 -p 2201
+```
+
+- or with the user key
 
 ```bash
 ssh vagrant@127.0.0.1 -p 2201
@@ -59,7 +64,6 @@ Host default
   LogLevel FATAL
   ForwardAgent yes
 ```
-
 
 ## sources
 
