@@ -30,3 +30,25 @@ default: Inserting generated public key within guest...
 default: Removing insecure key from the guest if it's present...
 default: Key inserted! Disconnecting and reconnecting using new SSH key
 ```
+
+
+## connect VM with OpenSSL anf the create key
+
+```bash
+ssh -i .vagrant/machines/default/virtualbox/private_key -p 2200 vagrant@localhost
+```
+
+- The information for this command find you out with
+
+```bash
+> vagrant ssh-config
+HostName 127.0.0.1
+  User vagrant
+  Port 2200
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/trapapa/Projects/ofGitHub/vagrant-ssh/default/.vagrant/machines/default/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+  ```
