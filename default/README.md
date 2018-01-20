@@ -31,7 +31,6 @@ default: Removing insecure key from the guest if it's present...
 default: Key inserted! Disconnecting and reconnecting using new SSH key
 ```
 
-
 ## connect VM with OpenSSL anf the create key
 
 ```bash
