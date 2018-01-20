@@ -17,5 +17,8 @@ https://www.vagrantup.com/docs/other/environmental-variables.html
 VAGRANT_BOX_UPDATE_CHECK_DISABLE
 https://www.vagrantup.com/docs/other/environmental-variables.html
 
+
+vagrant plugin install vagrant-timezone
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */
