@@ -38,3 +38,6 @@ VAGRANT_LOG=info vagrant up 2>&1| tee /tmp/vagrant.log
 
 
 https://swarm.workshop.perforce.com/view/guest/jen_bottom/vagrant/Vagrantfile?v=85
+
+
+vb.customize ["modifyvm", :id, "--ioapic", "on"]
