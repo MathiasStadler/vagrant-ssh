@@ -14,9 +14,9 @@
 config.ssh.insert_key = false
 ```
 
-## ssh own keys
+## ssh own_keys
 
-@TODO/Mathias
+- take the keys from $HOME/.ssh for login on the linux based box
 
 ## ssh with crt from CA
 
