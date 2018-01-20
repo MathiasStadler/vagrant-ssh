@@ -8,11 +8,11 @@
 
 ## ssh insecure key
 
-- use vagrant out of the box but with with 
+- use vagrant out of the box but with with insecure key
+
 ```bash
-config.ssh.keys_only =  true
+config.ssh.insert_key = false
 ```
-Vagrant will 
 
 ## ssh own keys
 

@@ -5,8 +5,10 @@
         "disksize",
         "keypair",
         "proxyconf",
+        "trapapa",
         "uuid",
         "vagrantfile",
-        "vbguest"
+        "vbguest",
+        "dpkg"
     ]
 }
