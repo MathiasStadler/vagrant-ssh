@@ -8,7 +8,11 @@
 
 ## ssh insecure key
 
-@TODO/Mathias
+- use vagrant out of the box but with with 
+```bash
+config.ssh.keys_only =  true
+```
+Vagrant will 
 
 ## ssh own keys
 
@@ -24,7 +28,9 @@
 
 ## vagrant log output
 
-- VAGRANT_LOG=info vagrant up &>/tmp/vagrant.log
+```bash
+VAGRANT_LOG=info vagrant up 2>&1| tee /tmp/vagrant.log
+```
 
 ## sources
 
