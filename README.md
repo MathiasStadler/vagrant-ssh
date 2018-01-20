@@ -35,3 +35,6 @@ VAGRANT_LOG=info vagrant up 2>&1| tee /tmp/vagrant.log
 ## sources
 
 [Change Insecure Key To My Own Key On Vagrant](http://ermaker.github.io/blog/2015/11/18/change-insecure-key-to-my-own-key-on-vagrant.html)
+
+
+https://swarm.workshop.perforce.com/view/guest/jen_bottom/vagrant/Vagrantfile?v=85
