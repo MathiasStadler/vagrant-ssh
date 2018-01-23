@@ -50,5 +50,15 @@ end
 # force tls version
 - server side
 
+
+#
+- ssh-keyscan -t rsa -p 2222 localhost
+
+- see here
+https://security.stackexchange.com/questions/119044/public-key-for-ssh-over-the-internet-differs-from-a-key-for-ssh-over-the-lan
+
+
+ssh-keyscan  -t ecdsa-sha2-nistp256 -H  -p 2222 127.0.0.1
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */
