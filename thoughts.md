@@ -43,5 +43,12 @@ Vagrant.configure("2") do |config|
 end
 
 
+## force ssh chipher 
+- client side
+- server side
+
+# force tls version
+- server side
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */
