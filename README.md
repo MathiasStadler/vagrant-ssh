@@ -2,6 +2,21 @@
 
 - apply OpenSSH with vagrant
 
+## Which ssh version used vagrant
+
+- vagrant used the ssh version that found at first in the environment PATH
+
+## How to set a different ssh version
+
+- Put the path of different SSH versoin at first in your PATH variable
+
+## Print version of ssh command
+
+```bash
+> ssh -V
+OpenSSH_7.2p2 Ubuntu-4ubuntu2.4, OpenSSL 1.0.2g  1 Mar 2016
+```
+
 ## default - SAFE
 
 - used the keys from .vagrant/machines/default/virtualbox/private_key
