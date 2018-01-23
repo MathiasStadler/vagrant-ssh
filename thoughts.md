@@ -33,6 +33,14 @@ https://books.google.de/books?id=7YJcDgAAQBAJ&pg=PA365&lpg=PA365&dq=vagrant+setu
 https://books.google.de/books?id=5AtnCgAAQBAJ&pg=PA125&lpg=PA125&dq=vagrant+setup+ca&source=bl&ots=msKgpIc_S7&sig=JPXbeiwTm6GgjNTBtJGfusvtjcs&hl=de&sa=X&ved=0ahUKEwisl_DCy-fYAhXCy6QKHdDtBkgQ6AEIXDAF#v=onepage&q=vagrant%20setup%20ca&f=false
 
 
+```ruby
+PROJECT_NAME = '/' + File.basename(Dir.getwd)
+```
+smalltest box
+Vagrant.configure("2") do |config|
+  config.vm.box = "olbat/tiny-core-micro"
+  config.vm.box_version = "0.1.0"
+end
 
 
 <!-- markdownlint-enable -->
