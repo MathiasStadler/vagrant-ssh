@@ -60,5 +60,44 @@ https://security.stackexchange.com/questions/119044/public-key-for-ssh-over-the-
 
 ssh-keyscan  -t ecdsa-sha2-nistp256 -H  -p 2222 127.0.0.1
 
+
+
+## ruby linter
+
+https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby
+
+
+// Basic settings: turn linter(s) on
+"ruby.lint": {
+	"reek": true,
+	"rubocop": true,
+	"ruby": true, //Runs ruby -wc
+	"fasterer": true,
+	"debride": true,
+	"ruby-lint": true
+}
+
+//advanced: set command line options for some linters:
+"ruby.lint": {
+	"ruby": {
+		"unicode": true //Runs ruby -wc -Ku
+	},
+	"rubocop": {
+		"only": ["SpaceInsideBlockBraces", "LeadingCommentSpace"],
+		"lint": true,
+		"rails": true
+	},
+	"reek": true
+}
+
+2002  2018-01-27 22:13:45 sudo gem install rubocop
+ 2003  2018-01-27 22:15:35 sudo gem install ruby-lint
+ 2004  2018-01-27 22:16:50 gem install fasterer
+ 2005  2018-01-27 22:16:57 sudo gem install fasterer
+ 2006  2018-01-27 22:18:18 gem install debride
+ 2007  2018-01-27 22:18:25 sudo gem install debride
+ 2008  2018-01-27 22:20:00 sudo gem install reek
+
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */
