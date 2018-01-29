@@ -99,5 +99,57 @@ https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby
  2008  2018-01-27 22:20:00 sudo gem install reek
 
 
+## vagrant plugin install vagrant-triggers
+- from here
+- https://github.com/emyl/vagrant-triggers
+
+
+
+- from here 
+- https://github.com/hashicorp/vagrant/issues/5199
+
+config.trigger.before [:reload, :up, :provision], stdout: true do
+  SYNCED_FOLDER = ".vagrant/machines/default/virtualbox/synced_folders"
+  info "Trying to delete folder #{SYNCED_FOLDER}"
+  # system "rm #{SYNCED_FOLDER}"
+  begin
+    File.delete(SYNCED_FOLDER)
+  rescue Exception => ex
+    warn "Could not delete folder #{SYNCED_FOLDER}."
+    warn ex.message
+  end
+end
+
+
+## missing pluguns
+# Require the Trigger plugin for Vagrant
+unless Vagrant.has_plugin?('vagrant-triggers')
+  # Attempt to install ourself. 
+  # Bail out on failure so we don't get stuck in an infinite loop.
+  system('vagrant plugin install vagrant-triggers') || exit!
+
+  # Relaunch Vagrant so the new plugin(s) are detected.
+  # Exit with the same status code.
+  exit system('vagrant', *ARGV)
+end
+
+- in short
+unless Vagrant.has_plugin?("vagrant-triggers")
+    raise 'vagrant-triggers plugin needs to be installed: vagrant plugin install vagrant-triggers'
+  end
+
+
+## register trigger for spezial vm
+- from here
+- https://github.com/emyl/vagrant-triggers/issues/28
+
+
+config.trigger.after :destroy, :stdout => true, :force => true, :vm => "web" do
+  info "Removing provisioned directory contents: #{host_provisioned_dir}/*"
+  FileUtils.rm_rf Dir.glob("#{host_provisioned_dir}/*")
+end
+
+FileUtils.remove_file(path, force = false)
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */
