@@ -90,6 +90,15 @@ https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby
 	"reek": true
 }
 
+# rules config
+https://github.com/bbatsov/rubocop/tree/master/config
+
+# ruby style guide
+https://github.com/bbatsov/ruby-style-guide#80-character-limits
+
+# # Thanks to @jnt30 for the comment!
+method(argument) # rubocop:disable SomeRule, SomeOtherRule
+
 2002  2018-01-27 22:13:45 sudo gem install rubocop
  2003  2018-01-27 22:15:35 sudo gem install ruby-lint
  2004  2018-01-27 22:16:50 gem install fasterer
