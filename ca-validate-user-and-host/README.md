@@ -1,6 +1,9 @@
 # vagrant ca-validate-user-and-host
 
-- Used a ca for validate user and host for login
+- [SSH CA](https://www.digitalocean.com/community/tutorials/how-to-create-an-ssh-ca-to-validate-hosts-and-clients-with-ubuntu)
+- cd [ssh x509](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_openssh_certificate_authentication#sec-Introduction_to_SSH_Certificates)
+- Used a CA
+ for validate user and host for login
 
 ## effective Vagrantfile
 
