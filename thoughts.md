@@ -160,5 +160,8 @@ end
 
 FileUtils.remove_file(path, force = false)
 
+
+## check VM not created. Moving on...
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */

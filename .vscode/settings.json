@@ -4,6 +4,7 @@
         "Vargrantfile",
         "disksize",
         "dpkg",
+        "hostkey",
         "keypair",
         "markdownlint",
         "proxyconf",

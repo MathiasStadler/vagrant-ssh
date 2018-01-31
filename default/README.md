@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.name= VM_NAME
         vb.gui = false
         vb.memory = VIRTUALBOX_MEMORY
-        vb.cpus = X
+        vb.cpus = VIRTUALBOX_CPU
     end
 end
 ```
