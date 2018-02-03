@@ -163,5 +163,20 @@ FileUtils.remove_file(path, force = false)
 
 ## check VM not created. Moving on...
 
+
+
+## bindfs
+https://github.com/gael-ian/vagrant-bindfs/blob/master/Vagrantfile
+
+
+## INFO proxyconf: git_proxy not enabled or configured
+
+
+$ PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ANSIBLE_HOST_KEY_CHECKING=false ANSIBLE_SSH_ARGS='-o UserKnownHostsFile=/dev/null -o ControlMaster=auto -o ControlPersist=60s' ansible-playbook --private-key=/home/someone/.vagrant.d/insecure_private_key --user=vagrant --connection=ssh --limit='machine1' --inventory-file=/home/someone/coding-in-a-project/.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory playbook.yml
+
+
+/opt/vagrant/embedded/gems/gems/vagrant-2.0.1/plugins/provisioners/ansible/provisioner
+
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */
