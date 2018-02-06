@@ -48,6 +48,16 @@ FORCE_LOCAL_RUN = false
 vagranthosts = ENV['VAGRANTS_HOST'] ? ENV['VAGRANTS_HOST'] : 'vagrant-hosts.yml'
 hosts = YAML.load_file(File.join(__dir__, vagranthosts))
 
+# if no server defined
+if hosts == false 
+  then 
+  $stdout.print "Yaml hosts => #{hosts}"
+  $stdout.print "Ouch! No server in file #{vagranthosts} defined \r\n"
+  exit 1
+end
+
+
+
 # {{{ Helper functions
 
 Vagrant.require_version ">= #{VAGRANT_VERSION}"
@@ -62,8 +72,8 @@ def provision_ansible(config, host)
     # Provisioning configuration for Ansible (for Mac/Linux hosts).
     config.vm.provision 'ansible' do |ansible|
       ansible.playbook = host.key?('playbook') ?
-          "ansible/#{host['playbook']}" :
-          'ansible/site.yml'
+          "provisioning/ansible/#{host['playbook']}" :
+          'provisioning/ansible/site.yml'
       ansible.become = true
     end
   end
@@ -228,6 +238,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = true
   config.ssh.paranoid = true
 
+# $stdout.print "hosts => #{hosts} "
+
   hosts.each do |host|
     # register triggers
     # vagrant up
@@ -270,7 +282,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # host name, this will fail.
         vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
       end
-      # provision_ansible(config, host)
+      provision_ansible(config, host)
     end
   end
 end
