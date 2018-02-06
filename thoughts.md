@@ -178,5 +178,8 @@ $ PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ANSIBLE_HOST_KEY_CHECKING=false AN
 /opt/vagrant/embedded/gems/gems/vagrant-2.0.1/plugins/provisioners/ansible/provisioner
 
 
+[robots]
+jenkins ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user='vagrant' ansible_ssh_private_key_file='/home/trapapa/.vagrant.d/insecure_private_key'
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */
