@@ -9,7 +9,7 @@ python -c "import platform; print(platform.system());"
 
 result Plattform => Linux
 
-## Check Mode (“Dry Run”
+## Check Mode (“Dry Run”)
 ```bash
 ansible-playbook foo.yml --check
 ```

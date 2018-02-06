@@ -3,8 +3,6 @@
 #- name: Create a file called '/tmp/testfile.txt' with the content 'hello world'.
 #copy: content="hello ca-server\n" dest=/tmp/ca-server.txt
 
-#  - include: ca-init.yml
-#    when: ca_init is defined and ca_force_create == true
 
 
 - name: "configuring locales"
@@ -35,8 +33,8 @@
 - import_tasks: wildcard_cert.yml
   when: ca_wildcard is defined
 
-- include: fetch_keys.yml
+- import_tasks: fetch_keys.yml
   when: ca_fetch_keys is defined
 
-- include: distribute_keys.yml
+- import_tasks: distribute_keys.yml
   when: ca_distribute_keys is defined
