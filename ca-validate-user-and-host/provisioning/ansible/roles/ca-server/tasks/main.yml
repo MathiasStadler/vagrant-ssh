@@ -21,7 +21,7 @@
 - debug: var=ca_subject
 
 - import_tasks: ca-validations.yml
-  when: (ca_force_create is undefined) and (inventory_hostsname == hostvars[groups['infra-instances'][0]]['inventory_hostname'])
+  #when: (ca_force_create is undefined) and (inventory_hostsname == hostvars[groups['infra-instances'][0]]['inventory_hostname'])
 
 - import_tasks: ca-conf.yml
   when: ca_init is defined and ca_force_create == true # defaults to false ...

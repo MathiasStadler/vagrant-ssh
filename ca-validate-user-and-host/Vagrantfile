@@ -51,8 +51,8 @@ hosts = YAML.load_file(File.join(__dir__, vagranthosts))
 # if no server defined
 if hosts == false 
   then 
-  $stdout.print "Yaml hosts => #{hosts}"
-  $stdout.print "Ouch! No server in file #{vagranthosts} defined \r\n"
+  $stdout.print "YAML No structures inside document => #{hosts}\r\n"
+  $stdout.print "Ouch! No server in file #{vagranthosts} defined\r\n"
   exit 1
 end
 

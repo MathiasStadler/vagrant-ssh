@@ -23,3 +23,8 @@
 **/*pem
 **/*crt
 **/*pub
+**/*ca
+
+
+#ansible
+**/*retry
