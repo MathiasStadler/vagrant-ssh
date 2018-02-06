@@ -33,7 +33,7 @@
 ---
 - name: ca-server
   box: debian/stretch64
-  playbook: hello-worl.yml
+  playbook: hello-world.yml
   synced_folders:
     - src: .
       dest: /vagrant
