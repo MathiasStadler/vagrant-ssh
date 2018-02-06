@@ -56,8 +56,6 @@ if hosts == false
   exit 1
 end
 
-
-
 # {{{ Helper functions
 
 Vagrant.require_version ">= #{VAGRANT_VERSION}"

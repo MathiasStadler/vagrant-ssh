@@ -36,3 +36,4 @@ ca_domain: "domain.local"
 ca_organizationalunit: IT
 ca_commonname: "domain.local"
 ca_email: "ca-admin@domain.local"
+

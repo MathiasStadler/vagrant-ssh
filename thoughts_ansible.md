@@ -14,5 +14,8 @@ result Plattform => Linux
 ansible-playbook foo.yml --check
 ```
 
+## ci test
+https://raymii.org/s/tutorials/Ansible_-_Playbook_Testing.html
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */

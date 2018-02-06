@@ -1,7 +1,6 @@
 ---
 - name: "generate CA private key"
-  shell:
-    "{{ item }}"
+  shell: "{{ item }}"
   args:
     chdir: "{{ ca_certs_dir }}"
   with_items:

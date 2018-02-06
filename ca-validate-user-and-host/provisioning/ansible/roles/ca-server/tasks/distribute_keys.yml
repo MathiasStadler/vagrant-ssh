@@ -1,5 +1,4 @@
 ---
-
 - name: "Ensures {{ ca_defult_ssl_certs_dir }} and {{ ca_defult_ssl_key_dir }} dirs exist"
   file:
     path: "{{ item }}"
@@ -44,5 +43,5 @@
 
 - debug: var=item.stdout_lines
   with_items:
-  - "{{ ls.results }}"
+    - "{{ ls.results }}"
   when: debug is defined

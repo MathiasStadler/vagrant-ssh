@@ -70,16 +70,17 @@
         "vagranthosts",
         "virtualbox"
     ],
-    "files.associations": {
-        "**/defaults/**/*": "ansible",
-        "**/tasks/**/*.yml" : "ansible",
-        "**/handler/*.yml" : "ansible",
-        "**/*_vars/**/*.yml" : "ansible",
-        "**/roles/**/*.yml" : "ansible",
-        "**/playbooks/**/*.yml" : "ansible",
-        "**/*ansible*/**/*.yml" : "ansible",
-        "**/vars/**/*.yml": "ansible",
-        "**/inventory/*/*": "ansible"
+    "saveAndRun": {
+        "commands": [
+            {
+                "match": "\\Vagrantfile$",
+                "cmd": "echo 'Validate ${file}' && vagrant validate"
+            },
+            {
+                "match": "\\.yml$",
+                "cmd": "echo 'Validate YAML ${file}' && ansible-playbook ${file} --check"
+            }
+        ]
     }
 
 }
