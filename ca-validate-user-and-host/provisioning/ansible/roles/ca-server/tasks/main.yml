@@ -1,0 +1,7 @@
+---
+# tasks file for ca-server
+#- name: Create a file called '/tmp/testfile.txt' with the content 'hello world'.
+#copy: content="hello ca-server\n" dest=/tmp/ca-server.txt
+
+  - include: ca-init.yml
+    when: ca_init is defined and ca_force_create == true

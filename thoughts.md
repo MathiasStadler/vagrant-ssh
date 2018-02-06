@@ -181,5 +181,7 @@ $ PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ANSIBLE_HOST_KEY_CHECKING=false AN
 [robots]
 jenkins ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user='vagrant' ansible_ssh_private_key_file='/home/trapapa/.vagrant.d/insecure_private_key'
 
+
+## Go ahead and give a try and tell me what you think (open an issue if needed ;)) 
 <!-- markdownlint-enable -->
 /* spell-checker: enable */

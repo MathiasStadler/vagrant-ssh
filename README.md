@@ -56,6 +56,20 @@ config.ssh.insert_key = false
 VAGRANT_LOG=info vagrant up 2>&1| tee /tmp/vagrant.log
 ```
 
+## vagrant-bash-completion
+
+- (found here)[https://github.com/brbsix/vagrant-bash-completion]
+
+- install
+
+```bash
+wget -q https://raw.github.com/brbsix/vagrant-bash-completion/master/vagrant-bash-completion/etc/bash_completion.d/vagrant
+
+sudo install -m 0644 vagrant /etc/bash_completion.d/
+```
+
+- reload your shell logout/login
+
 ## sources
 
 [Change Insecure Key To My Own Key On Vagrant](http://ermaker.github.io/blog/2015/11/18/change-insecure-key-to-my-own-key-on-vagrant.html)

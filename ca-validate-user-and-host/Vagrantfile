@@ -15,7 +15,7 @@ logger = Log4r::Logger.new('vagrant::vagrantfile')
 logger.debug 'enable logger debug'
 logger.info 'enable logger info'
 
-# TODO: Fix logger level
+#TODO Fix logger level
 
 # set default LC_ALL for all BOXES
 ENV['LC_ALL'] = 'en_US.UTF-8'
@@ -51,23 +51,6 @@ hosts = YAML.load_file(File.join(__dir__, vagranthosts))
 # {{{ Helper functions
 
 Vagrant.require_version ">= #{VAGRANT_VERSION}"
-
-def tmp_provision_ansible(config, host)
-  if run_locally?
-    # Provisioning configuration for shell script.
-    config.vm.provision 'shell' do |sh|
-      sh.path = 'scripts/run-playbook-locally.sh'
-    end
-  else
-    # Provisioning configuration for Ansible (for Mac/Linux hosts).
-    config.vm.provision 'ansible' do |ansible|
-      ansible.playbook = host.key?('playbook') ?
-          "ansible/#{host['playbook']}" :
-          'ansible/site.yml'
-      ansible.become = true
-    end
-  end
-end
 
 def provision_ansible(config, host)
   if run_locally?
@@ -118,12 +101,12 @@ def network_options(host)
   options
 end
 
-def custom_synced_folders(_config, _logger, host)
+def custom_synced_folders(vm, host)
   return unless host.key?('synced_folders')
-
   folders = host['synced_folders']
-  folders.each do |_folder|
-    $stdout.print 'used not folders in this sample'
+
+  folders.each do |folder|
+    vm.synced_folder folder['src'], folder['dest'], folder['options']
   end
 end
 
@@ -245,24 +228,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = true
   config.ssh.paranoid = true
 
-  # config.ssh.insert_key = false
-  # config.ssh.paranoid = false
   hosts.each do |host|
     # register triggers
     # vagrant up
-    [:up].each do |cmd, _trigger|
+    [:up].each do |cmd|
       config.trigger.after cmd, stdout: true, force: true, vm: host['name'] do
         info " register triggers after  #{cmd} for  #{host['name']}"
-        $stdout.print " register triggers host['name'] #{host['name']}\n"
-        $stdout.print "known_host => #{known_hosts}\n"
-        # write keys to ~/.ssh/know_hosts
+        logger.debug " register triggers host['name'] #{host['name']}\n"
+        logger.debug "known_host => #{known_hosts}\n"
         set_keys_to_known_host(host, known_hosts, logger)
-        # mount project dir to [vm_name]:/vagrant for ansible playbooks
-        # config from yaml config file
-        # custom_synced_folders(node.vm, host)
-        # TODO old approached custom_synced_folders(config,logger,host)
-
-        #provision_ansible(config, host)
       end
     end
 
@@ -270,22 +244,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     %i[destroy].each do |cmd|
       config.trigger.after cmd, stdout: true, force: true, vm: host['name'] do
         info " register triggers after #{cmd} for VM #{host['name']}"
-        logger.debug " register triggers host['name'] #{host['name']}\n"
-        logger.debug "known_host => #{known_hosts}\n"
+        #logger.debug " register triggers host['name'] #{host['name']}\n"
+        #logger.debug "known_host => #{known_hosts}\n"
         remove_kez_added_by_vagrant(host, known_hosts, logger)
-      end
-    end
-   
-    %i[provision].each do |cmd|
-      config.trigger.before cmd, stdout: true, force: true, vm: host['name'] do
-        $stdout.print " register triggers before #{cmd} for VM #{host['name']}"
-        end
-    end
-
-
-    %i[provision].each do |cmd|
-      config.trigger.after cmd, stdout: true, force: true, vm: host['name'] do
-        $stdout.print " register triggers after #{cmd} for VM #{host['name']}"
       end
     end
 
@@ -299,6 +260,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # disable install rsync
       config.vm.synced_folder '.', '/vagrant', disabled: true
 
+      
       # custom_synced_folders(node.vm, host)
       # shell_provisioners_always(node.vm, host)
       # forwarded_ports(node.vm, host)
@@ -308,7 +270,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # host name, this will fail.
         vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
       end
-      provision_ansible(config, host)
+      # provision_ansible(config, host)
     end
   end
 end

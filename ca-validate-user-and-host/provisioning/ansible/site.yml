@@ -1,0 +1,21 @@
+# site.yml
+# ---
+# - hosts: srv001
+#   become: true
+#   roles: []
+
+# - hosts: srv002
+#   become: true
+#   roles: []
+
+- hosts: ca-server
+  become: true
+  vars:
+    ca_init: true
+    ca_certify_nodes: true
+    ca_fetch_keys: true
+    ca_force_create: true
+    ca_force_certify_nodes: true
+    ca_distribute_keys: true
+  roles: [ca-server]
+

@@ -227,6 +227,7 @@ end
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = true
   config.ssh.paranoid = true
+
   hosts.each do |host|
     # register triggers
     # vagrant up
@@ -243,8 +244,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     %i[destroy].each do |cmd|
       config.trigger.after cmd, stdout: true, force: true, vm: host['name'] do
         info " register triggers after #{cmd} for VM #{host['name']}"
-        logger.debug " register triggers host['name'] #{host['name']}\n"
-        logger.debug "known_host => #{known_hosts}\n"
+        #logger.debug " register triggers host['name'] #{host['name']}\n"
+        #logger.debug "known_host => #{known_hosts}\n"
         remove_kez_added_by_vagrant(host, known_hosts, logger)
       end
     end
