@@ -1,6 +1,24 @@
 ---
-- name: "ensure install openssl is installed"
-  become: true
-  apt:
-        name: openssl
-        state: latest
+- name: "ensure openssl is installed"
+  apt: 
+      name: openssl 
+      state: latest
+
+- name: "create configuration directory"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+  with_items:
+  - "{{ ca_certs_dir }}"
+
+- name: "Deploy configuration items"
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ ca_certs_dir }}/{{ item }}"
+    owner: root
+    group: root
+  with_items:
+    - serial
+    - ca.conf
