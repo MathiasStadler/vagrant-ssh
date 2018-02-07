@@ -4,3 +4,10 @@
   tasks:
   - name: Create a file called '/tmp/testfile.txt' with the content 'hello world'.
     copy: content="hello world\n" dest=/tmp/testfile.txt
+
+  - name: Install Git VCS
+    become: true
+    apt:
+        name: git
+        state: latest
+

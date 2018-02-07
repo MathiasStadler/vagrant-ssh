@@ -1,5 +1,4 @@
 ---
-
 # Check for CA key existence (so we don't getnerate a new onw on every run)
 - block:
 

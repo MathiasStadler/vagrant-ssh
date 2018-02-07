@@ -7,7 +7,8 @@
         "fasterer": true,
         "debride": true,
         "ruby-lint": true
-    },"cSpell.enabled": true,
+    },
+    "cSpell.enabled": true,
     "cSpell.enabledLanguageIds": [
         "c",
         "cpp",
@@ -78,9 +79,8 @@
             },
             {
                 "match": "\\.yml$",
-                "cmd": "echo 'Validate YAML ${file}' && ansible-playbook ${file} --check"
+                "cmd": "ansible-playbook --syntax-check -i ${workspaceRoot}/test_inventory ${file}"
             }
         ]
     }
-
 }
