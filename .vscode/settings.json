@@ -29,7 +29,8 @@
         "text",
         "typescript",
         "typescriptreact",
-        "yml"
+        "yml",
+        "shellscript"
     ],
     "cSpell.words": [
         "VIRTUALBOX",
@@ -78,8 +79,12 @@
                 "cmd": "echo 'Validate ${file}' && vagrant validate"
             },
             {
-                "match": "\\.yml$",
+                "match": "\\.yml_disable$",
                 "cmd": "ansible-playbook --syntax-check -i ${workspaceRoot}/test_inventory ${file}"
+            },
+            {
+                "match": "\\.yml$",
+                "cmd": "${workspaceRoot}/utils/ansibe_roles_syntax_check.sh ${file}"
             }
         ]
     }
