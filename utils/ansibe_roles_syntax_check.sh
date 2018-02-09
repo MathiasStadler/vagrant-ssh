@@ -38,10 +38,10 @@ if [[ $result == *"cannot open"* ]] ;then
         return 1
 elif [[ $result == *"directory"* ]] ;then
         echo "directory found => ($result) ";
-        echo " Please give me a file not a directory"
+        echo " Please give me a file NOT a directory"
 else
-        echo "file found => ($result) ";
-        echo "a Inventory file found"
+        echo "Ansible inventory file found ";
+        #TODO debug echo "a Inventory file found"
 fi
 
 }
@@ -56,7 +56,7 @@ check_yml() {
     if [ "$result" -ne 0 ]; then
         echo -e "\033[01;33;41mOught please fix your YAML File\033[0m"
     else
-        echo -e "Your YAML File looks ok $result"
+        echo -e "\033[00;32mYour YAML File looks OK $result\033[0m"
     fi
 }
 
@@ -70,7 +70,7 @@ check_ansible() {
     if [ "$result" -ne 0 ]; then
         echo -e "\033[01;33;41mOught please fix your YAML File\033[0m"
     else
-        echo -e "Your YAML File looks ok $result"
+        echo -e "\033[00;32mYour YAML File looks OK $result\033[0m"
     fi
 }
 
@@ -89,8 +89,8 @@ for i in "${path_items[@]}"
     do
     path_of_roles="${path_of_roles}/${i}"
         if [ "$i" == "roles" ] ; then
-            echo "Found ${i}"
-            echo "${position_count}"
+            #TODO debug echo "Found ${i}"
+            #TODO debug echo "${position_count}"
             pos_of_match=${position_count}
         break
     fi
@@ -99,7 +99,7 @@ done
 
 #TODO debug echo "path_of_roles ${path_of_roles}"
 #TOD debug echo "pos_of_match => ${pos_of_match}"
-echo "found ansible role =>${path_items[${pos_of_match}+1]}"
+#TODO debug echo "found ansible role =>${path_items[${pos_of_match}+1]}"
 role_name=${path_items[${pos_of_match}+1]}
 test_yml_path="${role_name}/tests/main.yml"
 #TODO debug echo "test_yml_path ${test_yml_path}"
@@ -115,9 +115,9 @@ output=$("${tmp_cmd_file}")
 result="$?"
     set +x # undo command echoing
     if [ "$result" -ne 0 ]; then
-        echo -e "\033[01;33;41mOught please fix your YAML File\033[0m"
+        echo -e "\033[01;33;41mOught please fix your Ansible role\033[0m"
     else
-        echo -e "Your YAML File looks ok $result"
+        echo -e "\033[00;32mYour Ansible role looks ok $result\033[0m"
     fi
 }
 # from here
@@ -132,9 +132,9 @@ result=$(file "$playbook_file")
     elif [[ $result == *"directory"* ]]; then
         echo "DIRECTORY FOUND ($result) "
     else
-        echo "FILE FOUND ($result) "
+        #TODO debug echo "FILE FOUND ($result) "
         if [[ $playbook_file =~ .*ansible.*roles.*yml ]]; then
-            echo "ansible roles found"
+            #TODO debug  echo "ansible roles found"
             check_yml "${playbook_file}"
             check_ansible_roles "${playbook_file}" "${ansible_inventory_file}"
         elif [[ $playbook_file =~ .*ansible.*yml ]]; then
