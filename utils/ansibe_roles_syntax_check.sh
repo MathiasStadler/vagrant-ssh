@@ -140,6 +140,8 @@ echo "path_of_test_yml ${path_of_test_yml}"
 
 cmd="/usr/bin/ansible-playbook --syntax-check --check -i "${ansible_inventory_file}" "${path_of_test_yml}" "
 
+# from here
+# https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-temporary-random-file-name.html
 tmp_cmd_file="$(mktemp /tmp/run-ansible-playbook-check.XXXXXX)"
 
 echo $cmd > ${tmp_cmd_file}
