@@ -1,5 +1,29 @@
----
-- hosts: localhost
-  remote_user: root
+#---
+#- hosts: localhost
+#  remote_user: root
+#  roles:
+#    - ca-server
+
+- name: Bring up docker containers for docker connection inventory iface
+  hosts: localhost
   roles:
-    - ca-server
+    - role: provision_docker
+      provision_docker_privileged: true,
+      provision_docker_inventory_group: "{{ groups['robots'] }}"
+      provision_docker_use_docker_connection: true
+
+- hosts: robots
+  tasks:
+    - name: "Say hello to my new containers"
+      ping:
+
+- name: Run iptables Tests
+  hosts: docker_containers
+  vars:
+    ports: [22, 1025, 1026]
+  roles:
+    - role: ca-server
+      iptables_allowed_tcp_ports: "{{ ports }}"
+      tasks:
+          - name: Test ports
+            command: 'echo "hello world"'

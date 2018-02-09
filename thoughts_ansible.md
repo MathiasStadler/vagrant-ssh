@@ -48,5 +48,13 @@ https://raymii.org/s/tutorials/Ansible_-_Playbook_Testing.html
 ## https://github.com/chrismeyersfsu/provision_docker
 - many samples and link
 
+## debootrap
+https://ownyourbits.com/2017/02/19/creating-a-minimal-debian-container-for-docker/
+
+
+## docker allow networking
+net.ipv4.ip_forward=1
+sysctl -p
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */
