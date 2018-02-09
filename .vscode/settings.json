@@ -35,41 +35,41 @@
     "cSpell.words": [
         "VIRTUALBOX",
         "Vargrantfile",
-        "disksize",
-        "dpkg",
-        "hostkey",
-        "keypair",
-        "markdownlint",
-        "proxyconf",
-        "trapapa",
-        "uuid",
-        "vagrantfile",
-        "vbguest",
         "base",
         "dhcp",
+        "disksize",
+        "dpkg",
         "ecdsa",
+        "elif",
         "forwarding",
         "getwd",
         "grep",
         "gsub",
+        "hostkey",
         "intnet",
+        "keypair",
         "keyscan",
         "machinereadable",
+        "markdownlint",
+        "mktemp",
         "modifyvm",
         "netmask",
         "nistp",
         "popen",
         "provisioners",
+        "proxyconf",
         "rbconfig",
         "rsync",
         "rubocop",
         "sha",
         "shellwords",
         "showvminfo",
+        "trapapa",
         "userdir",
         "uuid",
         "vagrantfile",
         "vagranthosts",
+        "vbguest",
         "virtualbox"
     ],
     "saveAndRun": {
@@ -83,8 +83,12 @@
                 "cmd": "ansible-playbook --syntax-check -i ${workspaceRoot}/test_inventory ${file}"
             },
             {
-                "match": "\\.yml$",
+                "match": "\\.yml_disable1$",
                 "cmd": "${workspaceRoot}/utils/ansibe_roles_syntax_check.sh ${file}"
+            },
+            {
+                "match": "\\.yml$",
+                "cmd": "${workspaceRoot}/utils/ansibe_roles_syntax_check.sh ${file} ${workspaceRoot}/test_inventory"
             }
         ]
     }
