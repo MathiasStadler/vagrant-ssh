@@ -1,19 +1,29 @@
 ---
 # Check for CA key existence (so we don't getnerate a new onw on every run)
 - block:
+    # - name: "set _ca_key_exists var to false default"
+    #   set_fact:
+    #     _ca_key_exists: false
 
-    - name: "Check if ca.key certificate exsists"
+    # - name: "Show _ca_key_exists default value"
+    #   debug: msg="variable _ca_key_exists is set default to {{ _ca_key_exists }}"    
+
+    - name: "Check if ca.key certificate exsists {{ ca_defult_ssl_key_dir }}/{{ ca_key }}"
       stat: path="{{ ca_defult_ssl_key_dir }}/{{ ca_key }}"
       register: __key_file
 
     - name: "verify {{ ca_defult_ssl_key_dir }}/{{ ca_key }} status"
       debug: msg="{{ ca_defult_ssl_key_dir }}/{{ ca_key }} is present
-                  - setting fact _ca_key_exists [ internal fact with _ prefix ] to true - this role will not generate a new one"
+                   - setting fact _ca_key_exists [ internal fact with _ prefix ] to true - this role will not generate a new one"
       when: __key_file.stat.exists
 
-    - name: "set _ca_key_exists var to true"
-      set_fact:
-        _ca_key_exists: true
+
+    # - name: "set _ca_key_exists var to true"
+    #   set_fact:
+    #     _ca_key_exists: true
+
+
+    # - debug: msg="variable _ca_key_exists is {{ _ca_key_exists }}"
 
   rescue:
     - name: "rescue block - key exists ..."
@@ -28,6 +38,9 @@
   always:
     - name: "Show _ca_key_exists value"
       debug: msg="variable _ca_key_exists is set to {{ _ca_key_exists }}"
+
+
+- pause:
 
 # Check for CA cert existence (so we don't getnerate a new onw on every run)
 - block:

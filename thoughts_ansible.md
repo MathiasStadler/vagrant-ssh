@@ -56,5 +56,9 @@ https://ownyourbits.com/2017/02/19/creating-a-minimal-debian-container-for-docke
 net.ipv4.ip_forward=1
 sysctl -p
 
+
+## ansible-playbook single step
+ansible-playbook --step -i <inventory>  <playbook>
+
 <!-- markdownlint-enable -->
 /* spell-checker: enable */

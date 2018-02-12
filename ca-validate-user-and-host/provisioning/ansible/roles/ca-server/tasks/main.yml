@@ -3,10 +3,10 @@
 #- name: Create a file called '/tmp/testfile.txt' with the content 'hello world'.
 #copy: content="hello ca-server\n" dest=/tmp/ca-server.txt
 
-- name: "ensure openssl is installed"
-  apt: 
-      name: python 
-      state: latest
+# - name: "ensure openssl is installed"
+#   apt: 
+#       name: python 
+#       state: latest
 
 - name: "configuring locales"
   shell: export LANGUAGE="en_US.UTF-8" && echo 'LANGUAGE="en_US.UTF-8"' >> /etc/default/locale && echo 'LC_ALL="en_US.UTF-8"' >> /etc/default/locale

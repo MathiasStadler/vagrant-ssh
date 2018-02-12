@@ -4,29 +4,30 @@
 
 ## Sources
 
- [SSH CA](https://www.digitalocean.com/community/tutorials/how-to-create-an-ssh-ca-to-validate-hosts-and-clients-with-ubuntu)
-- cd [ssh x509](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_openssh_certificate_authentication#sec-Introduction_to_SSH_Certificates)
-(ansible ca)[https://www.tikalk.com/devops/Running-Your-Own-Ansible-Driven-CA/]
-(assible ca repo)[https://github.com/shelleg/ansible-role-ca/blob/master]
+ - [SSH CA](https://www.digitalocean.com/community/tutorials/how-to-create-an-ssh-ca-to-validate-hosts-and-clients-with-ubuntu)
+- [ssh x509](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_openssh_certificate_authentication#sec-Introduction_to_SSH_Certificates)
+- [ansible ca](https://www.tikalk.com/devops/Running-Your-Own-Ansible-Driven-CA/)
+- [assible ca repo](https://github.com/shelleg/ansible-role-ca/)
 
+## Used a CA
 
-- Used a CA
- for validate user and host for login
+- for validate user and host for login and run ansible-playbook
+
 ## TL,DR
 
-- set config to file ca-server-clients.yml
-- export the config file
+- set config to file ca-server-clients.yml and export to shell
 
 ```bash
 export VAGRANTS_HOST='ca-server-clients.yml'
 ```
+
 - and start all VM with the command
 
 ```bash
 vagrant up
 ```
 
-- and with the commands see you the status 
+- see status of vagrant 
 
 ```bash
 > vagrant status
@@ -40,7 +41,7 @@ above with their current state. For more information about a specific
 VM, run `vagrant status NAME`.
 ```
 
-- and ssh-config
+- see status of ssh-config
 
 ```bash
 > vagrant ssh-config
@@ -63,16 +64,24 @@ Host worker
   LogLevel FATAL
 ```
 
+## test ca-server roles
+
+- the test run inside a docker container
+
+```bash
+> cd provisioning/ansible/roles/ca-server
+> ansible-playbook -i tests/inventory tests/main.yml
+```
+
 ## conditions
 
-- [ ] No synced_folders between Host and VM and VM <-> VM 
-- [ ] Not user public kez on server except one maintance kez
+- [ ] No synced_folders between Host and VM and VM <-> VM
+- [ ] Not user public kez on server except one maintenance kez
 - [ ] No passwd login
 - [ ] No root login
-- [ ] CA kez always on ca-server 
+- [ ] CA kez always on ca-server
 
-
-- ![Alt pro](../signals_words/advantage.svg) All VM used a different key and host_key
+## ![Alt pro](../signals_words/advantage.svg) All VM used a different key and host_key
 
 - with setting
   - config.ssh.insert_key = true
@@ -214,6 +223,5 @@ end
 - The insecure_private_key is stored in $HOME/.vagrant.d/insecure_private_key
 
 ```bash
-#TODO missing
+@TODO missing
 ```
-

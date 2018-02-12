@@ -9,15 +9,29 @@
   roles:
     - role: provision_docker
       provision_docker_privileged: true,
-      provision_docker_inventory_group: "{{ groups['robots'] }}"
+      provision_docker_inventory_group: "{{ groups['provision_docker_inventory_group'] }}"
       provision_docker_use_docker_connection: true
 
-- hosts: robots
+- hosts: docker_container
+  gather_facts: False
+  
+  pre_tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      changed_when: False
+    - setup: # aka gather_facts
+  
+  
   tasks:
+    # # from here
+    # # https://gist.github.com/gwillem/4ba393dceb55e5ae276a87300f6b8e6f
+    # - name: install python 2
+    #   raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
     - name: "Say hello to my new containers"
       ping:
 
-- name: Run iptables Tests
+- name: Run ca-server
   hosts: docker_containers
   vars:
     ports: [22, 1025, 1026]
